@@ -10,4 +10,6 @@ module ma.example.schoolsystem {
 
     opens ma.example.schoolsystem to javafx.fxml;
     exports ma.example.schoolsystem;
+    exports ma.example.schoolsystem.entities;
+    opens ma.example.schoolsystem.entities to javafx.fxml;
 }

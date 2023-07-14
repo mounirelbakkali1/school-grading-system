@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -26,7 +30,7 @@
                         <Button layoutX="10.0" layoutY="120.0" mnemonicParsing="false" onAction="#showGradesPage" prefHeight="55.0" prefWidth="315.0" style="-fx-background-color: #283577; -fx-text-fill: #ffffff;" text="Grades" />
                      </children>
                   </VBox>
-                  <ImageView fitHeight="85.0" fitWidth="203.0" layoutX="74.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="85.0" fitWidth="203.0" layoutX="99.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../assets/logo.png" />
                      </image>
@@ -40,51 +44,142 @@
             </AnchorPane>
             <AnchorPane fx:id="main" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
 
-                <AnchorPane fx:id="programsPage" minHeight="0.0" minWidth="0.0" prefHeight="644.0" prefWidth="705.0" visible="false">
-                  <children>
-                     <Label layoutX="14.0" layoutY="21.0" text="Programs">
-                        <font>
-                           <Font size="15.0" />
-                        </font>
-                     </Label>
-                  </children></AnchorPane>
 
-                <AnchorPane fx:id="modulesPage" minHeight="0.0" minWidth="0.0" prefHeight="646.0" prefWidth="705.0" visible="false">
-                  <children>
-                     <Label layoutX="14.0" layoutY="24.0" text="Modules">
-                        <font>
-                           <Font size="15.0" />
-                        </font>
-                     </Label>
-                  </children></AnchorPane>
-
-                <AnchorPane fx:id="gradesPage" minHeight="0.0" minWidth="0.0" prefHeight="644.0" prefWidth="705.0" visible="false">
-                  <children>
-                     <Label layoutX="14.0" layoutY="29.0" text="Grades">
-                        <font>
-                           <Font size="15.0" />
-                        </font>
-                     </Label>
-                  </children></AnchorPane>
                 <AnchorPane fx:id="studentsPage" minHeight="0.0" minWidth="0.0" prefHeight="644.0" prefWidth="705.0">
                   <children>
-                     <Label layoutX="14.0" layoutY="23.0" text="Students">
+                     <Label layoutX="14.0" layoutY="23.0" text="// Students">
                         <font>
-                           <Font size="15.0" />
+                           <Font name="System Bold" size="15.0" />
                         </font>
                      </Label>
-                     <TableView layoutX="14.0" layoutY="247.0" prefHeight="388.0" prefWidth="679.0">
+                     <TextField fx:id="student_search_input" layoutX="518.0" layoutY="199.0" onKeyTyped="#rechercherStudent" prefHeight="27.0" prefWidth="171.0" promptText="rechercher" />
+                     <Button fx:id="newStudentBtn" layoutX="14.0" layoutY="200.0" mnemonicParsing="false" onAction="#saveNewStudent" prefHeight="26.0" prefWidth="138.0" style="-fx-background-color: #364cbbcf;" text="New Student" textFill="#fcfcfc">
+                        <padding>
+                           <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                        </padding>
+                     </Button>
+                     <TextField fx:id="student_first_name" layoutX="14.0" layoutY="79.0" prefHeight="27.0" prefWidth="185.0" promptText="example : ahmed" />
+                     <Label layoutX="13.0" layoutY="55.0" text="First Name" />
+                     <TextField fx:id="student_last_name" layoutX="232.0" layoutY="77.0" prefHeight="27.0" prefWidth="185.0" promptText="example : Alaoui" />
+                     <Label layoutX="231.0" layoutY="53.0" text="Last Name" />
+                     <DatePicker fx:id="student_birth_day" layoutX="447.0" layoutY="77.0" prefHeight="27.0" prefWidth="185.0" promptText="select birth day " />
+                     <Label layoutX="447.0" layoutY="53.0" text="Date of birth" />
+                     <TextField fx:id="student_email" layoutX="15.0" layoutY="145.0" prefHeight="27.0" prefWidth="222.0" promptText="example@gmail.com" />
+                     <Label layoutX="14.0" layoutY="121.0" text="Email" />
+                     <ComboBox fx:id="student_filliere" layoutX="299.0" layoutY="145.0" prefHeight="27.0" prefWidth="232.0" promptText="select filliere" />
+                     <Label layoutX="300.0" layoutY="121.0" text="Filliere" />
+                     <TableView fx:id="table_students" layoutX="14.0" layoutY="242.0" prefHeight="393.0" prefWidth="679.0">
                        <columns>
-                         <TableColumn prefWidth="75.0" text="Student ID" />
-                         <TableColumn prefWidth="98.0" text="First Name" />
-                           <TableColumn prefWidth="112.0" text="Second Name" />
-                           <TableColumn prefWidth="142.0" text="Date of birth" />
-                           <TableColumn minWidth="2.0" prefWidth="158.0" text="Email" />
-                           <TableColumn minWidth="0.0" prefWidth="93.0" text="Filliere" />
+                         <TableColumn fx:id="table_student_id" prefWidth="75.0" text="Student ID" />
+                         <TableColumn fx:id="table_student_first_name" prefWidth="98.0" text="First Name" />
+                           <TableColumn fx:id="table_student_last_name" prefWidth="94.0" text="Second Name" />
+                           <TableColumn fx:id="table_student_birth_day" prefWidth="103.0" text="Date of birth" />
+                           <TableColumn fx:id="table_student_email" minWidth="2.0" prefWidth="144.0" text="Email" />
+                           <TableColumn fx:id="table_student_filliere" minWidth="0.0" text="Filliere" />
+                           <TableColumn fx:id="table_student_action" minWidth="0.0" prefWidth="84.0" text="Action" />
                        </columns>
                      </TableView>
-                     <TextField layoutX="536.0" layoutY="210.0" promptText="rechercher" />
+                     <Button fx:id="calculer_score" layoutX="164.0" layoutY="200.0" mnemonicParsing="false" onAction="#calculerScore" prefHeight="26.0" prefWidth="138.0" style="-fx-background-color: #6ab9f9cf;" text="Calculer Score" textFill="#fcfcfc" visible="false">
+                        <padding>
+                           <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                        </padding>
+                     </Button>
+                     <Label fx:id="score" layoutX="331.0" layoutY="200.0">
+                        <font>
+                           <Font name="System Bold" size="18.0" />
+                        </font>
+                     </Label>
                   </children></AnchorPane>
+               <AnchorPane fx:id="programsPage" minHeight="0.0" minWidth="0.0" prefHeight="644.0" prefWidth="705.0" visible="false">
+                  <children>
+                     <Label layoutX="14.0" layoutY="23.0" text="// Programs">
+                        <font>
+                           <Font name="System Bold" size="15.0" />
+                        </font>
+                     </Label>
+                     <TableView fx:id="table_programs" layoutX="14.0" layoutY="242.0" prefHeight="393.0" prefWidth="679.0">
+                        <columns>
+                           <TableColumn fx:id="table_program_id" prefWidth="75.0" text="Program ID" />
+                           <TableColumn fx:id="table_program_name" prefWidth="187.0" text="Name" />
+                           <TableColumn fx:id="table_program_description" prefWidth="305.0" text="Description" />
+                           <TableColumn fx:id="table_program_action" minWidth="0.0" prefWidth="111.0" text="Action" />
+                        </columns>
+                     </TableView>
+                     <TextField fx:id="program_search_input" layoutX="518.0" layoutY="199.0" onKeyTyped="#rechercherProgram" prefHeight="27.0" prefWidth="171.0" promptText="rechercher" />
+                     <Button fx:id="newProgramBtn" layoutX="14.0" layoutY="200.0" mnemonicParsing="false" onAction="#saveNewProgram" prefHeight="26.0" prefWidth="138.0" style="-fx-background-color: #364cbbcf;" text="New Program" textFill="#fcfcfc">
+                        <padding>
+                           <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                        </padding>
+                     </Button>
+                     <TextField id="program_name" fx:id="program_name" layoutX="14.0" layoutY="79.0" prefHeight="27.0" prefWidth="260.0" promptText="example : physics" />
+                     <Label layoutX="13.0" layoutY="55.0" text="Name" />
+                     <Label layoutX="306.0" layoutY="55.0" text="Description" />
+                     <TextArea id="program_description" fx:id="program_description" layoutX="306.0" layoutY="79.0" prefHeight="85.0" prefWidth="383.0" promptText="program description" />
+                  </children>
+               </AnchorPane>
+               <AnchorPane fx:id="gradesPage" layoutY="-1.0" minHeight="0.0" minWidth="0.0" prefHeight="644.0" prefWidth="705.0" visible="false">
+                  <children>
+                     <Label layoutX="14.0" layoutY="23.0" text="// Grades">
+                        <font>
+                           <Font name="System Bold" size="15.0" />
+                        </font>
+                     </Label>
+                     <TableView fx:id="table_grades" layoutX="14.0" layoutY="242.0" prefHeight="393.0" prefWidth="679.0">
+                        <columns>
+                           <TableColumn fx:id="table_grade_id" prefWidth="75.0" text="Grade ID" />
+                           <TableColumn fx:id="table_grade_student_name" prefWidth="187.0" text="Student Name" />
+                           <TableColumn fx:id="table_grade_module_name" prefWidth="154.0" text="Module" />
+                           <TableColumn fx:id="table_grade_value" minWidth="0.0" prefWidth="150.0" text="Value" />
+                           <TableColumn fx:id="table_grade_action" prefWidth="112.0" text="Action" />
+                        </columns>
+                     </TableView>
+                     <TextField fx:id="grade_search_input" layoutX="518.0" layoutY="199.0" onKeyTyped="#rechercherGrade" prefHeight="27.0" prefWidth="171.0" promptText="rechercher" />
+                     <Button fx:id="newGradeBtn" layoutX="14.0" layoutY="200.0" mnemonicParsing="false" onAction="#saveNewGrade" prefHeight="26.0" prefWidth="138.0" style="-fx-background-color: #364cbbcf;" text="New Grade" textFill="#fcfcfc">
+                        <padding>
+                           <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                        </padding>
+                     </Button>
+                     <Label layoutX="13.0" layoutY="55.0" text="Student" />
+                     <ComboBox fx:id="grade_student" layoutX="14.0" layoutY="80.0" prefHeight="25.0" prefWidth="232.0" promptText="select student" />
+                     <Label layoutX="290.0" layoutY="53.0" text="Module" />
+                     <ComboBox fx:id="grade_module" layoutX="291.0" layoutY="78.0" prefHeight="25.0" prefWidth="232.0" promptText="select module" />
+                     <TextField id="grade_value" fx:id="grade_value" layoutX="14.0" layoutY="145.0" prefHeight="25.0" prefWidth="222.0" promptText="exmple : 16.00" />
+                     <Label layoutX="13.0" layoutY="121.0" text="Grade Value" />
+                  </children>
+               </AnchorPane>
+               <AnchorPane fx:id="modulesPage" layoutY="1.0" minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="644.0" prefWidth="705.0" visible="false">
+                  <children>
+                     <Label layoutX="14.0" layoutY="23.0" text="// Modules">
+                        <font>
+                           <Font name="System Bold" size="15.0" />
+                        </font>
+                     </Label>
+                     <TableView fx:id="table_modules" layoutX="14.0" layoutY="242.0" prefHeight="393.0" prefWidth="679.0">
+                        <columns>
+                           <TableColumn fx:id="table_module_id" prefWidth="75.0" text="Module ID" />
+                           <TableColumn fx:id="table_module_name" prefWidth="121.0" text="Name" />
+                           <TableColumn fx:id="table_module_description" prefWidth="171.0" text="Description" />
+                           <TableColumn fx:id="table_module_credits" minWidth="0.0" prefWidth="64.0" text="Credits" />
+                           <TableColumn fx:id="table_module_program" minWidth="0.0" prefWidth="134.0" text="Program" />
+                           <TableColumn fx:id="table_module_action" minWidth="0.0" prefWidth="113.0" text="Action" />
+                        </columns>
+                     </TableView>
+                     <TextField fx:id="module_search_input" layoutX="518.0" layoutY="199.0" onKeyTyped="#rechercherModule" prefHeight="27.0" prefWidth="171.0" promptText="rechercher" />
+                     <Button fx:id="newModuleBtn" layoutX="14.0" layoutY="200.0" mnemonicParsing="false" onAction="#saveNewModule" prefHeight="26.0" prefWidth="138.0" style="-fx-background-color: #364cbbcf;" text="New Module" textFill="#fcfcfc">
+                        <padding>
+                           <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                        </padding>
+                     </Button>
+                     <TextField id="module_name" fx:id="module_name" layoutX="14.0" layoutY="79.0" prefHeight="27.0" prefWidth="260.0" promptText="example : physics" />
+                     <Label layoutX="13.0" layoutY="55.0" text="Name" />
+                     <Label layoutX="306.0" layoutY="55.0" text="Description" />
+                     <TextArea id="module_decription" fx:id="module_description" layoutX="306.0" layoutY="79.0" prefHeight="47.0" prefWidth="383.0" promptText="module description" />
+                     <TextField id="module_credits" fx:id="module_credits" layoutX="15.0" layoutY="156.0" prefHeight="27.0" prefWidth="260.0" promptText="example : 10" />
+                     <Label layoutX="14.0" layoutY="132.0" text="Credits" />
+                     <Label layoutX="307.0" layoutY="132.0" text="Program" />
+                     <ComboBox fx:id="module_program" layoutX="307.0" layoutY="157.0" prefHeight="25.0" prefWidth="383.0" promptText="select Program" />
+                  </children>
+               </AnchorPane>
             </AnchorPane>
         </items>
       </SplitPane>

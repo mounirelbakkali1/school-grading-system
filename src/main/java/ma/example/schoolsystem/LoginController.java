@@ -32,19 +32,20 @@ public class LoginController {
 
     @FXML
     void signIn(ActionEvent event) throws SQLException {
-       /* Connection connection = Database.getConnection();
+        Connection connection = Database.getConnection();
         System.out.println("Connected to the database.");
 
         Statement statement = connection.createStatement();
         String query = "SELECT * FROM users";
         ResultSet resultSet = statement.executeQuery(query);
-        boolean validLogin = false ;
+        boolean validLogin = false;
 
         while (resultSet.next()) {
             String usr = resultSet.getString("username");
             String pwd = resultSet.getString("password");
-            if (username.equals(usr) && password.equals(pwd)){
-                validLogin = true ;
+            if (username.getText().equals(usr) && password.getText().equals(pwd)) {
+                System.out.println("valiiiiiiid");
+                validLogin = true;
                 break;
             }
         }
@@ -52,11 +53,10 @@ public class LoginController {
         statement.close();
         connection.close();
 
-*/
         System.out.println("clicked");
-        System.out.println("username = "+username.getText() +" pwd : "+password.getText());
+        System.out.println("username = " + username.getText() + " pwd : " + password.getText());
 
-        if (username.getText().equals("root") && password.getText().equals("admin")){
+        if (validLogin) {
             moveToSystem();
         }
     }
@@ -73,7 +73,6 @@ public class LoginController {
             e.printStackTrace();
         }
     }
-
 
     @FXML
     protected void moveToLogin() {
